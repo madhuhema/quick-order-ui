@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="available-items">
+    <h1>Available Items</h1>
+    <mat-grid-list *ngIf="items.length > 0" cols="4" rowHeight="100px">
+      <mat-grid-tile *ngFor="let item of items" colspan="1" rowspan="3">
+        <mat-card class="example-card">
+          <mat-card-title-group>
+            <mat-card-title>{{ item.name }}</mat-card-title>
+            <mat-card-subtitle>
+              <div>
+                <p>Type : {{ item.type }}</p>
+                <p> Status: {{ item.status }}</p>
+                <p> Price: {{ item.price }}</p>
+                <p> Sizes: {{ item.size }}</p>
+                <p> Prep Time: {{ item.prep_time_in_mins }} Minutes</p>
+              </div>
+            </mat-card-subtitle>
+            <img
+              mat-card-md-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            />
+          </mat-card-title-group>
+          <mat-card-content>
+            {{ item.description }}
+          </mat-card-content>
+          <mat-card-actions>
+            <button [routerLink]="['/items/update', item.id]">Update</button>
+            <button (click)="delete(item.id)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div>
+    <p>Want to create a new item? click the button below</p>
+    <button mat-button (click)="openCreateDialog()">Open dialog</button>
+  </div>
+</div>

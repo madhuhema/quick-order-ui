@@ -1,0 +1,111 @@
+<div class="form-conatiner">
+  <form class="qo-form" [formGroup]="createItemForm" (ngSubmit)="onSubmit()">
+    <div class="create-form">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="name">Name: </mat-label>
+          <input placeholder="name" type="text" formControlName="name" matInput />
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="description">Description: </mat-label>
+          <textarea
+            placeholder="description"
+            formControlName="description"
+            matInput
+          ></textarea>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="cuisine">Cuisine: </mat-label>
+            <input
+              placeholder="cuisine"
+              type="text"
+              formControlName="cuisine"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="type">Type: </mat-label>
+            <mat-select placeholder="Food Type" formControlName="type">
+              <mat-option value="" disabled>Select Type</mat-option>
+              <mat-option *ngFor="let type of types" [value]="type">{{
+                type
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="status">Availability: </mat-label>
+            <mat-select placeholder="status" formControlName="status">
+              <mat-option value="" disabled>Select status</mat-option>
+              <mat-option *ngFor="let option of status" [value]="option">{{
+                option
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="size">Available Sizes: </mat-label>
+            <mat-select placeholder="sizes" formControlName="size">
+              <mat-option value="" disabled>Select sizes</mat-option>
+              <mat-option *ngFor="let size of sizes" [value]="size">{{
+                size
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="price">Price: </mat-label>
+            <input
+              placeholder="price"
+              type="number"
+              formControlName="price"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="prep_time_in_mins"
+              >Preparation Time in Minutes:
+            </mat-label>
+            <input
+              placeholder="time in mins"
+              type="number"
+              formControlName="prep_time_in_mins"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div>
+        <button
+          type="submit"
+          [disabled]="!createItemForm.valid"
+          mat-stroked-button
+        >
+          create
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

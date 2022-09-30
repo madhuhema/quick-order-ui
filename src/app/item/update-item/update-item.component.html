@@ -1,0 +1,35 @@
+<form [formGroup]="updateItemForm"  (ngSubmit)="onSubmit()">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" />
+  
+    <label for="description">Description: </label>
+    <input id="description" type="text" formControlName="description" />
+  
+    <label for="price">Price: </label>
+    <input id="price" type="number" formControlName="price" />
+  
+    <label for="cuisine">Cuisine: </label>
+    <input id="cuisine" type="text" formControlName="cuisine" />
+  
+    <label for="type">Type: </label>
+    <input id="type" type="text" formControlName="type" />
+  
+    <label for="status">Availability: </label>
+    <input id="status" type="text" formControlName="status" />
+  
+    <label for="prep_time_in_mins">Preparation Time in Minutes: </label>
+    <input
+      id="prep_time_in_mins"
+      type="text"
+      formControlName="prep_time_in_mins"
+    />
+  
+    <label for="size">Available Sizes: </label>
+    <select formControlName="size">
+      <option [ngValue]="null" disabled>Select Sizes</option>
+      <option *ngFor="let size of sizes" [ngValue]="size">{{ size }}</option>
+    </select>
+  
+    <button type="submit" [disabled]="!updateItemForm.valid">create</button>
+  </form>
+  
