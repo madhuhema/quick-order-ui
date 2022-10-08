@@ -59,8 +59,7 @@
         <div>
           <mat-form-field appearance="fill">
             <mat-label for="size">Available Sizes: </mat-label>
-            <mat-select placeholder="sizes" formControlName="size">
-              <mat-option value="" disabled>Select sizes</mat-option>
+            <mat-select placeholder="sizes" formControlName="size" multiple>
               <mat-option *ngFor="let size of sizes" [value]="size">{{
                 size
               }}</mat-option>

@@ -24,8 +24,9 @@
             {{ item.description }}
           </mat-card-content>
           <mat-card-actions>
-            <button [routerLink]="['/items/update', item.id]">Update</button>
-            <button (click)="delete(item.id)">Delete</button>
+            <button [routerLink]="['/item/update', item.id]">Update</button>
+            <button (click)="openDeleteDialog(item)">Delete</button>
+            <button [routerLink]="['/item/show', item.id]">More</button>
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>
@@ -33,6 +34,6 @@
   </div>
   <div>
     <p>Want to create a new item? click the button below</p>
-    <button mat-button (click)="openCreateDialog()">Open dialog</button>
+    <button mat-button (click)="openCreateDialog()">Create New Item</button>
   </div>
 </div>

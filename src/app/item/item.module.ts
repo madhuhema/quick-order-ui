@@ -9,15 +9,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { ShowItemComponent } from './show-item/show-item.component';
+import { DeleteItemComponent } from './delete-item/delete-item.component';
 
 @NgModule({
   declarations: [
     ItemComponent,
     CreateItemComponent,
-    UpdateItemComponent
+    UpdateItemComponent,
+    ShowItemComponent,
+    DeleteItemComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +34,10 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatGridListModule,
     MatCardModule,
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ]
 })
 export class ItemModule { }

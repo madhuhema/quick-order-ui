@@ -20,31 +20,6 @@ export class UpdateItemComponent implements OnInit {
       this.updateItemForm.patchValue(item);
     })
   }
-
-//   cuisine
-// : 
-// "Indian"
-// description
-// : 
-// "A plate of basmati rice cooked with aromatic spices and served with dum cooked chicken"
-// name
-// : 
-// "Chicken Briyani"
-// prep_time_in_mins
-// : 
-// "30"
-// price
-// : 
-// 14
-// size
-// : 
-// "small"
-// status
-// : 
-// "Available"
-// type
-// : 
-// "NON-VEG"
   
   updateItemForm =  new FormGroup({
     id: new FormControl(0),

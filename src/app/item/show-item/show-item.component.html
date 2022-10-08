@@ -1,0 +1,16 @@
+<div class="container">
+    <div>
+        <h2>{{item.name}}</h2>
+        <p><b>Description:</b> {{item.description}}</p>
+        <p><b>Price:</b> {{item.price}}</p>
+        <p><b>Available sizes:</b> {{item.size}}</p>
+        <p><b>Cuisine:</b> {{item.cuisine}}</p>
+        <p><b>Preparation Time:</b> {{item.prep_time_in_mins}}</p>
+        <p><b>Veg/Non-Veg/Vegan:</b> {{item.type}}</p>
+        <p><b>Availability:</b> {{item.status}}</p>
+    </div>
+    <div>
+        <button [routerLink]="['/item/update', item.id]">Update</button>
+        <button (click)="openDeleteDialog()">Delete</button>
+    </div>
+</div>

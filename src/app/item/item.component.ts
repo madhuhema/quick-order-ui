@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ItemService } from '../services/item.service';
 import { Item } from '../_models/Item';
 import { CreateItemComponent } from './create-item/create-item.component';
+import { DeleteItemComponent } from './delete-item/delete-item.component';
 
 @Component({
   selector: 'app-item',
@@ -24,16 +25,22 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  delete(id: number | undefined) {
-    if (id != undefined) {
-      this.api.delete(id).subscribe();
-    }
-  }
-
   openCreateDialog() {
     const dialogRefernce = this.dialog.open(CreateItemComponent);
     // dialogRefernce.afterClosed().subscribe(result => {
     //   console.log(`Dialog result: ${result}`);
     // });
   }
+
+  openDeleteDialog(item:Item): void {
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      width: '250px',
+      data: { ...item }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.isDeleted) {
+        console.log(`the item ${result.name} has been deleted`);
+      }
+    });
+  } 
 }
