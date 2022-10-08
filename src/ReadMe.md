@@ -4,4 +4,4 @@
 
 ## Quick Order Application - UI
 
-Please find the [link](https://github.com/madhuhema/quick-order-ui/) for the application UI repository
+Please find the [link](https://github.com/madhuhema/quick-order-api) for the application API.
