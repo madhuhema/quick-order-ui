@@ -1,4 +1,8 @@
 <div class="container">
+  <div>
+    <p>Show my cart</p>
+    <button mat-button (click)="openCartDialog()">Show Cart</button>
+  </div>
   <div class="available-items">
     <h1>Available Items</h1>
     <mat-grid-list *ngIf="items.length > 0" cols="4" rowHeight="300px" gutterSize="10px" style="margin: 1rem">
@@ -6,10 +10,15 @@
         <mat-card>
           <div class="container-card">
             <mat-card-header>
-              <mat-card-title>{{ item.name }}</mat-card-title>
-              <mat-card-subtitle>
-                <p>Status: {{ item.status }}</p>
-              </mat-card-subtitle>
+              <div>
+                <mat-card-title>{{ item.name }}</mat-card-title>
+                <mat-card-subtitle>
+                  <p>Status: {{ item.status }}</p>
+                </mat-card-subtitle>
+              </div>
+              <div>
+                <button mat-button (click)="openOrderItemDialog(item)">Add To Cart</button>
+              </div>
             </mat-card-header>
             <div>
               <img
@@ -24,9 +33,9 @@
               </div>
             </mat-card-content>
             <mat-card-actions>
-              <button [routerLink]="['/item/update', item.id]">Update</button>
-              <button (click)="openDeleteDialog(item)">Delete</button>
-              <button [routerLink]="['/item/show', item.id]">More</button>
+              <button mat-button (click)="openUpdateDialog(item)">Update</button>
+              <button mat-button (click)="openDeleteDialog(item)">Delete</button>
+              <button mat-button [routerLink]="['/item/show', item.id]">More</button>
             </mat-card-actions>
           </div>
         </mat-card>

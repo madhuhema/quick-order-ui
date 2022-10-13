@@ -14,6 +14,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { ShowItemComponent } from './show-item/show-item.component';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
+import { CartModule } from '../cart/cart.module';
+import { OrderItemComponent } from './order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     CreateItemComponent,
     UpdateItemComponent,
     ShowItemComponent,
-    DeleteItemComponent
+    DeleteItemComponent,
+    OrderItemComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     MatDialogModule,
     MatGridListModule,
     MatCardModule,
+    CartModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

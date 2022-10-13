@@ -1,0 +1,53 @@
+<div class="form-conatiner">
+    <div></div>
+    <form class="qo-form" [formGroup]="createOrderItem" (ngSubmit)="onSubmit()">
+      <div class="create-form">
+        <h3>Please Confirm specifications!</h3>
+        <h4>For {{data.name}}</h4>
+        <div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label for="size">Confirm Size: </mat-label>
+              <mat-select placeholder="sizes" formControlName="size">
+                <mat-option *ngFor="let size of sizes" [value]="size">{{
+                  size
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label for="price">Quanity: </mat-label>
+              <input
+                placeholder="quantity"
+                type="number"
+                formControlName="quantity"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+              <mat-label for="preferences">Preferences if any: </mat-label>
+              <textarea
+                placeholder="preferences"
+                formControlName="preferences"
+                matInput
+              ></textarea>
+            </mat-form-field>
+          </div>
+    
+        <div>
+          <button
+            type="submit"
+            [disabled]="!createOrderItem.valid"
+            mat-stroked-button
+          >
+           Confirm
+          </button>
+          <button mat-button type="button" (click)="onCancel()" cdkFocusInitial>Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>

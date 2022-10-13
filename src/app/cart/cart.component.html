@@ -1,0 +1,43 @@
+<div class="cart-container">
+  <mat-list>
+    <mat-list-item *ngFor="let item of cart.item$ | async; index as i">
+      <div class="cart-list-option">
+        <div>
+          <p>{{ i + 1 }}. {{ item.name }}</p>
+        </div>
+        <div>
+          <p><span> size: </span> {{ item.size }}</p>
+        </div>
+        <div class="d-inline-flex">
+          <button
+            mat-icon-button
+            (click)="cart.update(item, { quantity: item.quantity - 1 })"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+          <div>{{ item.quantity }}</div>
+          <button
+            mat-icon-button
+            (click)="cart.update(item, { quantity: item.quantity + 1 })"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="cart.delete(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+  <div *ngIf="data.asDialog">
+    <button mat-button (click)="showCart()">Proceed To Checkout</button>
+  </div>
+  <div>
+    <button mat-button (click)="onBack()">Back</button>
+  </div>
+  <div *ngIf="!data.asDialog">
+    <button mat-button>Confirm Checkout</button>
+  </div>
+</div>

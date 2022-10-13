@@ -1,35 +1,109 @@
-<form [formGroup]="updateItemForm"  (ngSubmit)="onSubmit()">
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name" />
-  
-    <label for="description">Description: </label>
-    <input id="description" type="text" formControlName="description" />
-  
-    <label for="price">Price: </label>
-    <input id="price" type="number" formControlName="price" />
-  
-    <label for="cuisine">Cuisine: </label>
-    <input id="cuisine" type="text" formControlName="cuisine" />
-  
-    <label for="type">Type: </label>
-    <input id="type" type="text" formControlName="type" />
-  
-    <label for="status">Availability: </label>
-    <input id="status" type="text" formControlName="status" />
-  
-    <label for="prep_time_in_mins">Preparation Time in Minutes: </label>
-    <input
-      id="prep_time_in_mins"
-      type="text"
-      formControlName="prep_time_in_mins"
-    />
-  
-    <label for="size">Available Sizes: </label>
-    <select formControlName="size">
-      <option [ngValue]="null" disabled>Select Sizes</option>
-      <option *ngFor="let size of sizes" [ngValue]="size">{{ size }}</option>
-    </select>
-  
-    <button type="submit" [disabled]="!updateItemForm.valid">create</button>
+<div class="form-conatiner">
+  <form class="qo-form" [formGroup]="updateItemForm" (ngSubmit)="update()">
+    <div class="create-form">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="name">Name: </mat-label>
+          <input
+            placeholder="name"
+            type="text"
+            formControlName="name"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="description">Description: </mat-label>
+          <textarea
+            placeholder="description"
+            formControlName="description"
+            matInput
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="cuisine">Cuisine: </mat-label>
+            <input
+              placeholder="cuisine"
+              type="text"
+              formControlName="cuisine"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="type">Type: </mat-label>
+            <mat-select placeholder="Food Type" formControlName="type">
+              <mat-option value="" disabled>Select Type</mat-option>
+              <mat-option *ngFor="let type of types" [value]="type">{{
+                type
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="status">Availability: </mat-label>
+            <mat-select placeholder="status" formControlName="status">
+              <mat-option value="" disabled>Select status</mat-option>
+              <mat-option *ngFor="let option of status" [value]="option">{{
+                option
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="size">Available Sizes: </mat-label>
+            <mat-select placeholder="sizes" formControlName="size" multiple>
+              <mat-option *ngFor="let size of sizes" [value]="size">{{
+                size
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="price">Price: </mat-label>
+            <input
+              placeholder="price"
+              type="number"
+              formControlName="price"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="prep_time_in_mins"
+              >Preparation Time in Minutes:
+            </mat-label>
+            <input
+              placeholder="time in mins"
+              type="number"
+              formControlName="prep_time_in_mins"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <button mat-button type="submit" [disabled]="!updateItemForm.valid">Update</button>
+        <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+      </div>
+    </div>
   </form>
-  
+</div>
