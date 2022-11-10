@@ -1,0 +1,16 @@
+.cart-list-option{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+    width: 100%;
+    > div {
+        flex: 1;
+    }
+}
+
+.d-inline-flex {
+    display: inline-flex;
+    padding: 10px;
+    align-items: center;
+}

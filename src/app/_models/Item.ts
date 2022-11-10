@@ -10,9 +10,9 @@ export enum ItemStatus {
 }
 
 export enum ItemSize {
+    regular = "regular",
     small = "small",
     medium = "medium",
-    regular = "regular",
     large = "large",
     xl = "extra large"
 }

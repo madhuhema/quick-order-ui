@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OrderRoutingModule } from './order-routing.module';
 import { OrderComponent } from './order.component';
 import { CartModule } from '../cart/cart.module';
+import { ItemListComponent } from '../_standalone/item-list/item-list.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CartModule } from '../cart/cart.module';
   imports: [
     CommonModule,
     CartModule,
-    OrderRoutingModule
+    OrderRoutingModule,
+    ItemListComponent
   ]
 })
 export class OrderModule { }

@@ -1,1 +1,27 @@
-<p>order works!</p>
+<div *ngIf="order">
+  <div>
+    <h3>Your Order Details:</h3>
+    <div>
+      <h3>Status: {{ order.status }}</h3>
+      <div *ngFor="let item of order.items; index as i">
+        <qo-item-list
+          [item]="item"
+          [index]="i"
+          [deletable]="order.status == 'Placed'"
+          [updatable]="false"
+          [editable]="order.status == 'Placed'"
+        ></qo-item-list>
+      </div>
+    </div>
+    <h3><b>Total Cost:</b>{{ order.cost }}</h3>
+  </div>
+  <div *ngIf="(cart.item$ | async)!.length > 0">
+    <h2>Your new items</h2>
+    <qo-cart></qo-cart>
+    <button mat-button (click)="updateOrder()">Update Order</button>
+  </div>
+  <div *ngIf="order.status != 'Completed'">
+    <h3>You can add more items to your order!</h3>
+    <button mat-button [routerLink]="['']">Add More Items</button>
+  </div>
+</div>

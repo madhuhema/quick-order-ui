@@ -11,28 +11,46 @@ import { OrderItem } from 'src/app/_models/OrderItem';
   styleUrls: ['./order-item.component.scss']
 })
 export class OrderItemComponent implements OnInit {
-  sizes: any;
+  sizes!: any;
+  createOrderItem!: FormGroup;
   constructor(public dialogRef: MatDialogRef<OrderItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Item,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      item?: Item,
+      orderItem?: OrderItem
+    },
     private api: ItemService) {
-    this.sizes = Object.values(this.data.size);
+    if (!!this.data.item) {
+      this.sizes = Object.values(this.data.item.size);
+    }
+
   }
 
   ngOnInit(): void {
+    debugger;
+    this.createOrderItem = new FormGroup({
+      size: new FormControl({ value: this.sizes?.length > 0 ? this.sizes[0] : this.data.orderItem?.size, 
+        disabled: !!this.data.orderItem
+      }),
+      quantity: new FormControl(1),
+      preferences: new FormControl(''  || this.data.orderItem?.preferences),
+      itemId: new FormControl(this.data.item?.id || this.data.orderItem?.itemId),
+      name: new FormControl(this.data.item?.name || this.data.orderItem?.name),
+      price: new FormControl(this.data.item?.price || this.data.orderItem?.price),
+    })
   }
-  createOrderItem = new FormGroup({
-    size: new FormControl('regular'),
-    quantity: new FormControl(1),
-    preferences: new FormControl(''),
-    itemId: new FormControl(this.data.id),
-    name: new FormControl(this.data.name),
-    price: new FormControl(this.data.price),
-  })
+
   onSubmit() {
-    if (this.data.id != undefined) {
-      const result = this.createOrderItem.value as OrderItem;
-      this.dialogRef.close(result);
+    if (!!this.data.item) {
+      if (this.data.item?.id != undefined) {
+        const result = this.createOrderItem.value as OrderItem;
+        this.dialogRef.close(result);
+      }
     }
+
+    if (!!this.data.orderItem) {
+
+    }
+
   }
   onCancel(): void {
     this.dialogRef.close();

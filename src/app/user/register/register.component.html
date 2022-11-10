@@ -1,0 +1,66 @@
+<div class="form-container">
+  <form class="qo-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="register-form">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="email">Username/Email: </mat-label>
+          <input
+            placeholder="Username/Email"
+            type="text"
+            formControlName="email"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="password">Password: </mat-label>
+          <input
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="confirmPassword">Confirm Password: </mat-label>
+          <input
+            placeholder="Confirm Password"
+            type="password"
+            formControlName="confirmPassword"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label for="role">Role: </mat-label>
+          <mat-select placeholder="Your Role" formControlName="role">
+            <mat-option value="" disabled>Select Role</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role">{{
+              role
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="!registerForm.valid"
+          mat-stroked-button
+        >
+          create
+        </button>
+      </div>
+      <div>
+        <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

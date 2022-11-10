@@ -1,0 +1,22 @@
+.form-container {
+    width: 100%;
+    .qo-form {
+      width: 100%;
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: auto;
+        div {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          width: 100%;
+          gap : 20px;
+          .mat-form-field , button{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }  

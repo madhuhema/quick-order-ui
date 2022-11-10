@@ -3,10 +3,10 @@
     <form class="qo-form" [formGroup]="createOrderItem" (ngSubmit)="onSubmit()">
       <div class="create-form">
         <h3>Please Confirm specifications!</h3>
-        <h4>For {{data.name}}</h4>
+        <h4>For {{data.item?.name || data.orderItem?.name}}</h4>
         <div>
           <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field *ngIf="!!data.item" appearance="fill">
               <mat-label for="size">Confirm Size: </mat-label>
               <mat-select placeholder="sizes" formControlName="size">
                 <mat-option *ngFor="let size of sizes" [value]="size">{{
@@ -14,6 +14,16 @@
                 }}</mat-option>
               </mat-select>
             </mat-form-field>
+            <mat-form-field *ngIf="!!data.orderItem" appearance="fill">
+              <mat-label for="size">Size </mat-label>
+              <input
+                placeholder="size"
+                type="text"
+                formControlName="size"
+                matInput
+              />
+            </mat-form-field>
+
           </div>
           <div>
             <mat-form-field appearance="fill">
@@ -44,7 +54,7 @@
             [disabled]="!createOrderItem.valid"
             mat-stroked-button
           >
-           Confirm
+           {{data.item ? "Add to Cart" : "Update Order"}}
           </button>
           <button mat-button type="button" (click)="onCancel()" cdkFocusInitial>Cancel</button>
         </div>

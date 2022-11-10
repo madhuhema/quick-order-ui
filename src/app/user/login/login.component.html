@@ -1,0 +1,33 @@
+<div class="form-container">
+    <form class="qo-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="login-form">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="email">Username/Email: </mat-label>
+            <input placeholder="Username/Email" type="text" formControlName="email" matInput />
+          </mat-form-field>
+        </div>
+    
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label for="password">Password: </mat-label>
+            <input placeholder="Password" type="password" formControlName="password" matInput />
+          </mat-form-field>
+        </div>
+    
+    
+        <div>
+          <button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            mat-stroked-button
+          >
+            Login
+          </button>
+        </div>
+        <div>
+          <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,29 @@
+<div class="cart-list-option">
+    <div>
+      <p>{{ index + 1 }}. {{ item.name }}</p>
+    </div>
+    <div>
+      <p><span> size: </span> {{ item.size }}</p>
+    </div>
+    <div class="d-inline-flex">
+      <button *ngIf="canAddOrMinus"
+        mat-icon-button
+        (click)="cart.update(item, { quantity: item.quantity - 1 })"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+      <div>{{ item.quantity }}</div>
+      <button *ngIf="canAddOrMinus"
+        mat-icon-button
+        (click)="cart.update(item, { quantity: item.quantity + 1 })"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <button *ngIf="canDelete" mat-icon-button (click)="cart.delete(item)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button *ngIf="edit" mat-icon-button (click)="openOrderItemDialog(item)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>

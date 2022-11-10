@@ -60,7 +60,7 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  openOrderItemDialog(item:Item): void {
+  public openOrderItemDialog(item:Item): void {
     const dialogRef = this.dialog.open(OrderItemComponent, {
       data: { ...item }
     });
@@ -79,7 +79,7 @@ export class ItemComponent implements OnInit {
   openCartDialog() {
     const dialogRefernce = this.dialog.open(CartComponent, {
       width: "80%",
-      data: { asDialog: true }
+      data: { asDialog: true}
     });
   }
 }

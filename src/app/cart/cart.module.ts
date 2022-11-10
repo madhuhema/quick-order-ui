@@ -6,6 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ItemListComponent } from '../_standalone/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
     RouterModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    ItemListComponent
   ],
   exports: [
     CartComponent
